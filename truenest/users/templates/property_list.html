@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}My Properties{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="min-height: 500px;">
+    <h2 class="hdng">Your Properties</h2>
+    <a href="{% url 'property_add' %}" class="btn com-btn mb-3">Add New Property</a>
+    <div class="row">
+        {% for property in properties %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ property.image.url }}" class="card-img-top" alt="{{ property.title }}">
+                <div class="card-body">
+                    <h5>{{ property.title }}</h5>
+                    <p>{{ property.location }}</p>
+                    <a href="{% url 'property_detail' property.id %}" class="btn view-btn btn-sm">View Details</a>
+                    <a href="{% url 'property_edit' property.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'property_delete' property.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No properties found. Add one!</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

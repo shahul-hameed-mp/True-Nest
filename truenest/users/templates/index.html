@@ -1,0 +1,96 @@
+{% extends "base.html"%} 
+{% load static %} {% block title %}Home{% endblock %}
+{% block content %}
+<!-- Header-->
+
+<div class="home-image-container">
+  <img
+    src="{% static 'images/homepage.png' %}"
+    alt="Home Image"
+    class="home-image"
+  />
+  <div class="overlay">
+    <h1>Welcome to <span style="color: #5ec2a4">TrueNest</span></h1>
+    <p>Your dream house is just a click away</p>
+    <a href="{% url 'properties_all' %}" class="btn explore-button">Explore Now</a>
+  </div>
+</div>
+
+<form method="get" action="" class="mb-4 mt-4 ms-5 me-5">
+  <div class="row g-3">
+    <!-- Location -->
+    <div class="col-md-4">
+      <input type="text" name="location" class="form-control" placeholder="Search by Location" value="{{ request.GET.location }}">
+    </div>
+
+    <!-- Min Price -->
+    <div class="col-md-2">
+      <input type="number" name="min_price" class="form-control" placeholder="Min Price" value="{{ request.GET.min_price }}">
+    </div>
+
+    <!-- Max Price -->
+    <div class="col-md-2">
+      <input type="number" name="max_price" class="form-control" placeholder="Max Price" value="{{ request.GET.max_price }}">
+    </div>
+
+    <!-- Property Type -->
+    <div class="col-md-3">
+      <select name="property_type" class="form-select">
+        <option value="">Property Type</option>
+        {% for choice_value, choice_label in property_type_choices %}
+          <option value="{{ choice_value }}" {% if request.GET.property_type == choice_value %}selected{% endif %}>
+            {{ choice_label }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    
+
+    <!-- Submit -->
+    <div class="col-md-1">
+      <button type="submit" class="btn btn-primary w-100">Search</button>
+    </div>
+  </div>
+</form>
+
+
+<!-- card -->
+<div class="container my-5" style="min-height: 300px;">
+  <div class="row">
+   
+    {% for item in Property %}
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="position-relative">
+            <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}" style="height: 200px; object-fit: cover;">
+            <span class="badge position-absolute top-0 start-0 m-2 px-3 py-1">
+                {{ item.property_for }}
+            </span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text text-muted">
+            <i class="fas fa-map-marker-alt"></i> {{ item.location }}
+          </p>
+          <p>
+            <span class="badge bdg2">{{ item.property_type }}</span>
+          </p>
+          <p class="card-text">
+            <i class="fas fa-bed"></i> {{ item.beds }} Beds &nbsp;
+            <i class="fas fa-bath"></i> {{ item.baths }} Baths &nbsp;
+            <i class="fas fa-car"></i> {{ item.garage }} Garage
+          </p>
+          <h6 class="text-success">${{ item.price }}</h6>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'property_detail' item.id %}" class="btn view-btn btn-sm">View Details</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+  <p class="text-center">No properties found.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

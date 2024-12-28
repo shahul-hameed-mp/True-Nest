@@ -1,0 +1,39 @@
+{% extends "base.html"%} {% load static %}  {% block title %}Login{% endblock %}
+{% block content %}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 login-container">
+            <h2 class="text-center mb-4 hdng">Login</h2>
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+                <!-- Username -->
+                <div class="mb-3">
+                    <input type="text" name="username" id="username" class="form-control small-field" placeholder="Enter your username" required>
+                    {% if form.username.errors %}
+                        <div class="text-danger small">{{ form.username.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <input type="password" name="password" id="password" class="form-control small-field" placeholder="Enter your password" required>
+                    {% if form.password.errors %}
+                        <div class="text-danger small">{{ form.password.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn reg-btn">Login</button>
+                </div>
+            </form>
+            <div class="mt-3 text-center">
+                <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,282 @@
+:root {
+    --light-green: #5ec2a4;
+    --gray: #99b0a8;
+    --darkgreen:#364b44;
+    --bold-green:#204f41;
+    --color5:#48737e;
+    --light-blue:#00a8a4;
+    /* --yellow:#ffcc00; */
+    
+  }
+
+/* styles.css */
+
+/* base.html */
+
+.navbar {
+    background-color:var(--darkgreen); 
+    border-bottom: 4px solid var(--gray); 
+    padding: 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color:var(--light-green)!important;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--light-green) !important;
+}
+
+.navbar-nav .nav-link:active {
+    color: var(--light-green);
+}
+.navbar-toggler {
+    border-color: var(--gray);
+}
+
+.dropdown-menu {
+    min-width: 200px; /* Ensures enough space for dropdown items */
+    background-color: var(--darkgreen);
+    
+}
+
+.dropdown-item{
+    color: #ffffff;
+}
+
+.dropdown-item:hover {
+    background-color: var(--gray); /* Light gray hover effect */
+}
+
+footer {
+    background-color: var(--darkgreen); 
+    color: var(--light-green); 
+    border-top: 4px solid var(--gray); 
+    font-size: 0.9rem;
+}
+
+/* Home Image Container */
+/* home.html */
+.home-image-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden;   
+}
+
+
+.home-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.overlay h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.overlay p {
+    font-size: 1.5rem;
+}
+
+/* Button Styles */
+.explore-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: var(--darkgreen); 
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.explore-button:hover {
+    background-color: var(--bold-green); 
+    transform: scale(1.05); 
+}
+
+.explore-button:active {
+    background-color: var(--bold-green); /* Even darker blue for active */
+    transform: scale(0.95); /* Slight shrink on click */
+}
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.badge {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background: rgba(0, 128, 0, 0.7); /* Semi-transparent blue */
+    color: white;
+}
+
+.bdg2 {
+    background-color: var(--color5);
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-footer {
+    background-color:#f8f9fa;;
+}
+
+.view-btn {
+    background-color: var(--darkgreen);
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view-btn:hover {
+    background-color: var(--bold-green); 
+    transform: scale(1.05);
+    color: white;
+}
+
+
+.register-container {
+    background-color: var(--gray);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.small-field {
+    width: 75%; 
+    margin: 0 auto;
+}
+
+.fname {
+   margin-right: 0;
+   margin-left: 66px;
+}
+
+.lname {
+    margin-left: 0;
+    margin-right: 40px;
+}
+
+.register-container .row > .col-md-6 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.form-control {
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+.reg-btn {
+    background-color: var(--darkgreen);
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    color: #ffffff;
+    width: 50%;
+    margin: 0 auto; /* Centers the button */
+    padding: 10px; /* Adjust padding */
+    font-size: 16px;
+}
+.reg-btn:hover {
+    background-color: var(--bold-green);
+    color: #ffffff;
+}
+
+.hdng{
+    color: var(--color5);
+}
+
+.login-container {
+    background-color: var(--gray);
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 50px;
+}
+
+.cancel-btn {
+    background-color: var(--light-blue);
+    border-radius: 20px;
+    color: #ffffff;
+    border: none;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    
+}
+
+.cancel-btn:hover{
+    background-color: var(--color5);
+    color: #ffffff;
+}
+
+
+.heading-container {
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    background-color: var(--light-green);
+
+  }
+  
+  .heading-container h2 {
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+
+.inquiry{
+    background-color: var(--gray); 
+}
+.com-btn {
+    background-color: var(--darkgreen);
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    color: #ffffff;
+    /* margin: 0 auto; 
+    padding: 10px;  */
+    font-size: 16px;
+}
+
+.com-btn:hover {
+    background-color: var(--bold-green);
+    color: #ffffff;
+}
+
+.form-control-sm, .form-select-sm {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    height: auto;
+  }

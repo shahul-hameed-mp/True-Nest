@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}My Favorites{% endblock %}
+
+{% block content %}
+<div class="container my-5 " style="min-height: 500px;">
+    <div class="heading-container  text-light text-center py-3 mb-5">
+        <h2>Your Favorite Properties</h2>
+    </div>
+    
+
+    <div class="row">
+        {% if favorites %}
+            {% for favorite in favorites %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="position-relative">
+                        <img src="{{ favorite.property.image.url }}" class="card-img-top" alt="{{ favorite.property.title }}" style="height: 200px; object-fit: cover;">
+                        <span class="badge position-absolute top-0 start-0 m-2 px-3 py-1">
+                            {{ favorite.property.property_for }}
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ favorite.property.title }}</h5>
+                        <p class="card-text text-muted">
+                            <i class="fas fa-map-marker-alt"></i> {{ favorite.property.location }}
+                        </p>
+                        <p>
+                            <span class="badge bdg2">{{ favorite.property.property_type }}</span>
+                        </p>
+                        <p class="card-text">
+                            <i class="fas fa-bed"></i> {{ favorite.property.beds }} Beds &nbsp;
+                            <i class="fas fa-bath"></i> {{ favorite.property.baths }} Baths &nbsp;
+                            <i class="fas fa-car"></i> {{ favorite.property.garage }} Garage
+                        </p>
+                        <h6 class="text-success">${{ favorite.property.price }}</h6>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'property_detail' favorite.property.id %}" class="btn view-btn btn-sm">View Details</a>
+                    </div>
+                    <div class="card-footer text-center mt-2">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="property_id" value="{{ favorite.property.id }}">
+                            <button type="submit" name="remove_from_favorites" class="btn btn-danger btn-sm">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>You have no favorite properties yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

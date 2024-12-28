@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Add Property{% endblock %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container register-container my-5">
+    <h2 class="mb-4">{{ view.title }}</h2>
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+        
+        <div class="row g-3">
+            <!-- Title -->
+            <div class="col-md-3">
+                <label for="id_title" class="form-label"><strong>Property Title</strong></label>
+                {{ form.title|add_class:"form-control form-control-sm" }}
+            </div>
+            
+            <!-- Price -->
+            <div class="col-md-3">
+                <label for="id_price" class="form-label"><strong>Price</strong></label>
+                {{ form.price|add_class:"form-control form-control-sm" }}
+            </div>
+            
+            <!-- Property Type -->
+            <div class="col-md-3">
+                <label for="id_property_type" class="form-label"><strong>Property Type</strong></label>
+                {{ form.property_type|add_class:"form-select form-select-sm" }}
+            </div>
+            
+            <!-- Property For -->
+            <div class="col-md-3">
+                <label for="id_property_for" class="form-label"><strong>Property For</strong></label>
+                {{ form.property_for|add_class:"form-select form-select-sm" }}
+            </div>
+            
+            <!-- Location -->
+            <div class="col-md-3">
+                <label for="id_location" class="form-label"><strong>Location</strong></label>
+                {{ form.location|add_class:"form-control form-control-sm" }}
+            </div>
+            
+            <!-- Beds, Baths, Garage -->
+            <div class="col-md-3">
+                <label for="id_beds" class="form-label"><strong>Beds</strong></label>
+                {{ form.beds|add_class:"form-control form-control-sm" }}
+            </div>
+            <div class="col-md-3">
+                <label for="id_baths" class="form-label"><strong>Baths</strong></label>
+                {{ form.baths|add_class:"form-control form-control-sm" }}
+            </div>
+            <div class="col-md-3">
+                <label for="id_garage" class="form-label"><strong>Garage</strong></label>
+                {{ form.garage|add_class:"form-control form-control-sm" }}
+            </div>
+            
+            <!-- Square Feet -->
+            <div class="col-md-3">
+                <label for="id_sqft" class="form-label"><strong>Square Feet</strong></label>
+                {{ form.sqft|add_class:"form-control form-control-sm" }}
+            </div>
+            
+            <!-- Built Year -->
+            <div class="col-md-3">
+                <label for="id_built_year" class="form-label"><strong>Built Year</strong></label>
+                {{ form.built_year|add_class:"form-control form-control-sm" }}
+            </div>
+            
+            <!-- Latitude & Longitude -->
+            <div class="col-md-3">
+                <label for="id_latitude" class="form-label"><strong>Latitude</strong></label>
+                {{ form.latitude|add_class:"form-control form-control-sm" }}
+            </div>
+            <div class="col-md-3">
+                <label for="id_longitude" class="form-label"><strong>Longitude</strong></label>
+                {{ form.longitude|add_class:"form-control form-control-sm" }}
+            </div>
+            
+            <!-- Description -->
+            <div class="col-md-12">
+                <label for="id_description" class="form-label"><strong>Description</strong></label>
+                {{ form.description|add_class:"form-control form-control-sm" }}
+            </div>
+            
+            <!-- Image -->
+            <div class="col-md-6">
+                <label for="id_image" class="form-label"><strong>Property Image</strong></label>
+                {{ form.image|add_class:"form-control form-control-sm" }}
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-4 d-flex justify-content-around">
+            <button type="submit" class="btn com-btn px-4">Save</button>
+            <a href="{% url 'property_list' %}" class="btn cancel-btn px-4">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+

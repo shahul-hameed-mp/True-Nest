@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Property{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="min-height: 500px;">
+    <h2>Are you sure you want to delete "{{ object.title }}"?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'property_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

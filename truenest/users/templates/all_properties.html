@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}All Properties{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="min-height: 500px;">
+  <div class="heading-container  text-light text-center py-3 mb-5">
+    <h2>All Properties</h2>
+  </div>
+  <form method="get" action="" class="mb-4 mt-4 ms-5 me-5">
+    <div class="row g-3">
+      <!-- Location -->
+      <div class="col-md-4">
+        <input type="text" name="location" class="form-control" placeholder="Search by Location" value="{{ request.GET.location }}">
+      </div>
+  
+      <!-- Min Price -->
+      <div class="col-md-2">
+        <input type="number" name="min_price" class="form-control" placeholder="Min Price" value="{{ request.GET.min_price }}">
+      </div>
+  
+      <!-- Max Price -->
+      <div class="col-md-2">
+        <input type="number" name="max_price" class="form-control" placeholder="Max Price" value="{{ request.GET.max_price }}">
+      </div>
+  
+      <!-- Property Type -->
+      <div class="col-md-3">
+        <select name="property_type" class="form-select">
+          <option value="">Property Type</option>
+          {% for choice_value, choice_label in property_type_choices %}
+            <option value="{{ choice_value }}" {% if request.GET.property_type == choice_value %}selected{% endif %}>
+              {{ choice_label }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      
+  
+      <!-- Submit -->
+      <div class="col-md-1">
+        <button type="submit" class="btn btn-primary w-100">Search</button>
+      </div>
+    </div>
+  </form>
+  {% include 'property_card.html' %}
+</div>
+{% endblock %}

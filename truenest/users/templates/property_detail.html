@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}{{ property.title }} Details{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <!-- Heading -->
+  <div class="heading-container text-light text-center py-3 mb-5">
+    <h2>{{ property.title }}</h2>
+  </div>
+
+  <!-- Property Details -->
+  <div class="row">
+    <div class="col-md-8">
+      <!-- Property Image -->
+      <div class="card mb-4 shadow-sm">
+        <img src="{{ property.image.url }}" alt="{{ property.title }}" class="card-img-top" style="border-radius: 8px;">
+      </div>
+
+      <!-- Property Info -->
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title hdng mb-4">Property Details</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Price:</strong> ${{ property.price }}</li>
+            <li class="list-group-item"><strong>Location:</strong> {{ property.location }}</li>
+            <li class="list-group-item"><strong>Beds:</strong> {{ property.beds }} | <strong>Baths:</strong> {{ property.baths }}</li>
+            <li class="list-group-item"><strong>Garage:</strong> {{ property.garage }}</li>
+            <li class="list-group-item"><strong>Square Feet:</strong> {{ property.sqft }}</li>
+            <li class="list-group-item"><strong>Built Year:</strong> {{ property.built_year }}</li>
+            <li class="list-group-item"><strong>Description:</strong> {{ property.description }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title hdng mb-4">Location Map</h4>
+          {% if property.latitude and property.longitude %}
+          <iframe 
+            src="https://www.openstreetmap.org/export/embed.html?bbox={{ property.longitude|floatformat:6 }},{{ property.latitude|floatformat:6 }}&layer=mapnik&marker={{ property.latitude|floatformat:6 }},{{ property.longitude|floatformat:6 }}" 
+            width="100%" 
+            height="400" 
+            style="border:0; border-radius: 8px;" 
+            allowfullscreen 
+            loading="lazy">
+          </iframe>
+          {% else %}
+            <div class="d-flex justify-content-center align-items-center" style="height: 400px; border-radius: 8px; background-color: #f8f9fa;">
+                <p class="text-muted">Location map is not available for this property.</p>
+            </div>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- Add to Favorites -->
+      <form method="post" class="mb-4">
+        {% csrf_token %}
+        <input type="hidden" name="add_to_favorites">
+        {% if is_favorite %}
+          <button class="btn btn-info btn-block" disabled>Added to Favorites</button>
+        {% else %}
+          <button class="btn reg-btn btn-block">Add to Favorites</button>
+        {% endif %}
+      </form>
+
+      
+      <div class="card inquiry mb-4 ">
+        <div class="card-body">
+          <h4 class="card-title hdng">Send an Inquiry</h4>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success btn-block mt-3">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+
+

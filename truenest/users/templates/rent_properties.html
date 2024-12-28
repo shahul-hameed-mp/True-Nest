@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Rent Properties{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="heading-container bg-info text-light text-center py-3 mb-4">
+    <h2>Properties for Rent</h2>
+  </div>
+  {% include 'property_card.html' %}
+</div>
+{% endblock %}

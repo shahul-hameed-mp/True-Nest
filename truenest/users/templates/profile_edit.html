@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile{% endblock %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Profile Edit Card -->
+            <div class="card shadow-lg register-container" >
+                <div class="card-body" style="padding: 0;">
+                    <h2 class="text-center mb-4 hdng">Edit Your Profile</h2>
+                    
+                    <form method="POST" enctype="multipart/form-data" class="needs-validation">
+                        {% csrf_token %}
+
+                        <!-- Profile Picture -->
+                        <div class="form-group mb-4 text-center">
+                            <label for="id_profile_picture" class="form-label small-field">
+                                <strong>Profile Picture:</strong>
+                            </label>
+                            {% if form.profile_picture.value %}
+                                <div class="mb-3 small-field">
+                                    <img src="{{ form.profile_picture.value.url }}" 
+                                         alt="Current Profile Picture" 
+                                         class="img-thumbnail rounded-circle shadow-sm" 
+                                         width="150" 
+                                         title="Current Profile Picture">
+                                </div>
+                            {% endif %}
+                            {{ form.profile_picture|add_class:"form-control form-control-sm small-field" }}
+                            {% if form.profile_picture.errors %}
+                                <div class="text-danger mt-2 small-field">{{ form.profile_picture.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Bio -->
+                        <div class="form-group mb-3 small-field">
+                            <label for="id_bio" class="form-label"><strong>Bio:</strong></label>
+                            {{ form.bio|add_class:"form-control form-control-sm" }}
+                            <small class="form-text text-muted">Share something about yourself.</small>
+                            {% if form.bio.errors %}
+                                <div class="text-danger mt-2">{{ form.bio.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="form-group mb-3 small-field">
+                            <label for="id_phone_number" class="form-label"><strong>Phone Number:</strong></label>
+                            {{ form.phone_number|add_class:"form-control form-control-sm" }}
+                            <small class="form-text text-muted">Enter a valid phone number.</small>
+                            {% if form.phone_number.errors %}
+                                <div class="text-danger mt-2">{{ form.phone_number.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- First Name -->
+                        <div class="form-group mb-3 small-field">
+                            <label for="id_first_name" class="form-label"><strong>First Name:</strong></label>
+                            {{ form.first_name|add_class:"form-control form-control-sm" }}
+                            <small class="form-text text-muted">Your given name.</small>
+                            {% if form.first_name.errors %}
+                                <div class="text-danger mt-2">{{ form.first_name.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="form-group mb-3 small-field">
+                            <label for="id_last_name" class="form-label"><strong>Last Name:</strong></label>
+                            {{ form.last_name|add_class:"form-control form-control-sm" }}
+                            <small class="form-text text-muted">Your family name.</small>
+                            {% if form.last_name.errors %}
+                                <div class="text-danger mt-2">{{ form.last_name.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group mb-3 small-field">
+                            <label for="id_email" class="form-label"><strong>Email:</strong></label>
+                            {{ form.email|add_class:"form-control form-control-sm" }}
+                            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            {% if form.email.errors %}
+                                <div class="text-danger mt-2">{{ form.email.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="form-group mt-4 text-center small-field">
+                            <button type="submit" class="btn reg-btn btn-lg">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <a href="{% url 'profile_view' %}" class="btn cancel-btn btn-lg">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

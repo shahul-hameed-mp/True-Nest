@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="card mx-auto shadow-lg register-container" style="max-width: 600px;">
+        <div class="card-body">
+            <!-- Profile Section -->
+            {% if profile %}
+                <h2 class="text-center mb-4 hdng">Your Profile</h2>
+
+                <!-- Profile Picture -->
+                <div class="text-center mb-4">
+                    {% if profile.profile_picture %}
+                        <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="img-thumbnail rounded-circle" width="130">
+                    {% else %}
+                        <img src="{% static 'images/default_profile_picture.png' %}" alt="Default Profile Picture" class="img-thumbnail rounded-circle" width="130">
+                    {% endif %}
+                </div>
+
+                <!-- Profile Details -->
+                <h5 class="card-title text-center">{{ profile.user.username }}</h5>
+                <p class="text-center"> {{ profile.user.first_name  }} {{ profile.user.last_name  }}</p>
+                <p class="text-center">{{ profile.user.email }}</p>
+
+                <hr>
+
+                <!-- Bio -->
+                <p><strong>Bio:</strong> {{ profile.bio|default:"No bio added yet." }}</p>
+
+                <!-- Phone Number -->
+                <p><strong>Phone Number:</strong> {{ profile.phone_number|default:"Not provided." }}</p>
+
+                <!-- Edit Profile Button -->
+                <div class="text-center mt-4">
+                    <a href="{% url 'edit_profile' %}" class="btn reg-btn">
+                        <i class="fas fa-edit "></i> Edit Profile
+                    </a>
+                </div>
+            {% else %}
+                <!-- No Profile Found -->
+                <div class="alert alert-warning text-center" role="alert">
+                    Profile not found. Please create your profile.
+                </div>
+                <div class="text-center mt-4">
+                    <a href="" class="btn reg-btn">
+                        <i class="fas fa-plus"></i> Create Profile
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
