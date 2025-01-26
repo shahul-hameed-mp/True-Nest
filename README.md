@@ -37,7 +37,7 @@ Welcome to **TrueNest**, a user-friendly real estate platform designed exclusive
 
 1. **Clone the repository**:  
    ```bash
-   git clone https://github.com/shahul-hameed-mp/TrueNest.git
+   git clone https://github.com/shahul-hameed-mp/True-Nest.git
    cd TrueNest
    ```
 
