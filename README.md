@@ -100,12 +100,6 @@ Welcome to **TrueNest**, a user-friendly real estate platform designed exclusive
 
 ---
 
-## 📜 License  
-
-This project is licensed under the **MIT License**. See the LICENSE file for details.  
-
----
-
 ## 💬 Contact  
 
 For any inquiries or feedback, feel free to reach out:  
