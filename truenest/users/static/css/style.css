@@ -10,6 +10,10 @@
   }
 
 /* styles.css */
+::selection {
+    background-color: var(--light-green);
+    color: #fff;
+  }
 
 /* base.html */
 
@@ -43,7 +47,7 @@
 }
 
 .dropdown-menu {
-    min-width: 200px; /* Ensures enough space for dropdown items */
+    min-width: 200px; 
     background-color: var(--darkgreen);
     
 }
@@ -53,7 +57,7 @@
 }
 
 .dropdown-item:hover {
-    background-color: var(--gray); /* Light gray hover effect */
+    background-color: var(--gray);
 }
 
 footer {
@@ -68,7 +72,7 @@ footer {
 .home-image-container {
     position: relative;
     width: 100%;
-    height: 100vh; 
+    height: 90vh; 
     overflow: hidden;   
 }
 
